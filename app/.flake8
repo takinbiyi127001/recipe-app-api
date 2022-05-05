@@ -1,0 +1,8 @@
+[flake8]
+ignore = D203
+exclude =
+    migrations,
+    __pycache__,
+    manage.py,
+    settings.py
+max-complexity = 10
