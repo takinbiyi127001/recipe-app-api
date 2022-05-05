@@ -3,15 +3,13 @@ on: [push]
 jobs:
   docker:
     runs-on: ubuntu-latest
-
+ 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
+ 
     - name: Start containers
       run: docker-compose -f "docker-compose.yml" up -d --build
-
+ 
     - name: Run tests
-      run: docker-compose up -d && docker-compose run --rm app sh -c "python manage.py test"
-    - name: Lints
-      run: docker-compose run --rm app sh -c "flake8"
+      run: docker-compose run app sh -c "python3 manage.py test && flake8"
