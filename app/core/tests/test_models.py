@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 
 class ModelTests(TestCase):
-    """Test Cases"""
+    """Test Cases for users"""
     def test_create_user_with_email_successful(self):
         """Test creating a new user with an email"""
         email = 'test@yahoo.com'
@@ -19,8 +19,9 @@ class ModelTests(TestCase):
     def test_new_user_email_normalised(self):
         """Test the email for a new user is normalized"""
         email = 'test@YAHOO.COM'
-        user = get_user_model().objects.create_user(email=email,
-        password='test123')
+        user = get_user_model().objects.create_user(
+            email=email,
+            password='test123')
 
         self.assertEqual(user.email, email.lower())
 
@@ -33,7 +34,8 @@ class ModelTests(TestCase):
     def test_create_new_superuser(self):
         """Test creating a new superuser"""
         user = get_user_model().objects.create_superuser(
-            email='test@yahoo.com', password='test123'
+            email='test@yahoo.com',
+            password='test123'
         )
 
         self.assertTrue(user.is_superuser)
