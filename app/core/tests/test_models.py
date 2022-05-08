@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class ModelTests(TestCase):
     """Test Cases for users"""
     def test_create_user_with_email_successful(self):
-        """Test creating a new user with an email"""
+        """Test creating a new user with an email is successful"""
         email = 'test@yahoo.com'
         password = 'Testpass123'
         user = get_user_model().objects.create_user(
@@ -31,7 +31,7 @@ class ModelTests(TestCase):
             get_user_model().objects.create_user(email=None,
             password='test123')
 
-    def test_create_new_superuser(self):
+    def test_new_superuser(self):
         """Test creating a new superuser"""
         user = get_user_model().objects.create_superuser(
             email='test@yahoo.com',
